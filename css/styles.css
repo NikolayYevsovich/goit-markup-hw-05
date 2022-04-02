@@ -6,6 +6,7 @@
   --main-font-color: #212121;
   --secondary-font-color: #757575;
   --sec-bg-font-color: #ffffff;
+  --team-txt-color: #eeeeee;
   /* Цвет фона */
   --main-bg-color: #ffffff;
   --secondary-bg-color: #2f303a;
@@ -16,6 +17,9 @@
   --hero-btn-accent: #188ce8;
   /* Цвет иконок */
   --socials-icon-color: #afb1b8;
+  /* Эффекты */
+  --anim-fast: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --anim-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -121,10 +125,24 @@ img {
   display: block;
   padding-top: 32px;
   padding-bottom: 31px;
+  transition: color var(--anim-fast);
+  position: relative;
 }
 .nav-link-txt:focus,
 .nav-link-txt:hover {
   color: var(--accent-color);
+}
+
+.current::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
 }
 
 /* Контактные данные */
@@ -160,6 +178,7 @@ img {
   letter-spacing: 0.02em;
   color: var(--secondary-font-color);
   text-decoration: none;
+  transition: color var(--anim-fast);
 }
 .header-phone:focus,
 .header-phone:hover,
@@ -221,12 +240,12 @@ img {
   height: 50px;
   border: 1px solid transparent;
   border-radius: 4px;
+  transition: background-color var(--anim-fast), border var(--anim-fast);
 }
 .hero-btn:hover,
 .hero-btn:focus {
   background-color: var(--hero-btn-accent);
   border: 1px solid var(--accent-color);
-  border-radius: 4px;
 }
 
 /* Наши особенности */
@@ -280,6 +299,27 @@ img {
 .about-item:not(:last-child) {
   margin-right: 30px;
 }
+.about-wrapper {
+  position: relative;
+}
+.about-descr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--sec-bg-font-color);
+  width: 100%;
+  min-height: 70px;
+  background-color: rgba(47, 48, 58, 0.8);
+}
+
 /* Наша команда */
 .team {
   background-color: var(--third-bg-color);
@@ -345,6 +385,7 @@ img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  transition: background-color var(--anim-fast), fill var(--anim-fast);
 }
 .socials-link:hover,
 .socials-link:focus {
@@ -387,6 +428,7 @@ img {
   border: 1px solid var(--socials-icon-color);
   border-radius: 4px;
   color: var(--socials-icon-color);
+  transition: color var(--anim-fast), border var(--anim-fast);
 }
 .clients-icon {
   fill: currentColor;
@@ -395,7 +437,7 @@ img {
 .clients-link:hover,
 .clients-link:focus {
   border: 1px solid var(--accent-color);
-  border-radius: 4px;
+  /* border-radius: 4px; */
   cursor: pointer;
   color: var(--accent-color);
 }
@@ -452,13 +494,15 @@ img {
 }
 
 .address-mail,
-.address-phone {
+.address-phone,
+.address-link {
   font-family: var(--main-font);
   font-style: normal;
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
+  transition: color var(--anim-fast);
 }
 .address-mail:hover,
 .address-mail:focus,
@@ -498,6 +542,7 @@ img {
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--main-bg-color);
+  transition: background-color var(--anim-fast);
 }
 .footer-icon {
   fill: currentColor;
@@ -528,6 +573,7 @@ img {
   min-width: 128px;
   border: 1px solid transparent;
   border-radius: 4px;
+  transition: color var(--anim-fast), box-shadow var(--anim-fast);
 }
 .list-btn:not(:last-child) {
   margin-right: 8px;
@@ -538,13 +584,12 @@ img {
   color: #ffffff;
   background-color: var(--accent-color);
   cursor: pointer;
-  border: 1px solid var(--accent-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
 }
 .portfolio-card {
   display: block;
+  transition: box-shadow var(--anim-fast);
 }
 .portfolio-card:hover,
 .portfolio-card:focus {
@@ -569,11 +614,38 @@ img {
 .portfolio-card {
   text-decoration: none;
 }
+.portfolio-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-descr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0.03em;
+  color: var(--sec-bg-font-color);
+  background-color: rgba(33, 150, 243, 0.9);
+  padding: 63px 24px;
+  transform: translateY(101%);
+  transition: transform var(--anim-fast);
+}
+.portfolio-item:hover .portfolio-descr {
+  transform: translateY(0%);
+}
+
 .card-txt {
   padding: 20px 24px;
-  border-left: 1px solid #eeeeee;
-  border-right: 1px solid #eeeeee;
-  border-bottom: 1px solid #eeeeee;
+  border-left: 1px solid var(--team-txt-color);
+  border-right: 1px solid var(--team-txt-color);
+  border-bottom: 1px solid var(--team-txt-color);
 }
 .portfolio-item-ttl {
   font-weight: bold;
@@ -589,6 +661,61 @@ img {
   letter-spacing: 0.03em;
   color: var(--secondary-font-color);
 }
+
+/* Модальное окно */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transition: opacity var(--anim-slow), visibility var(--anim-slow);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal-wrapper {
+  width: 528px;
+  height: 581px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 8px;
+  right: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  background-color: var(--main-bg-color);
+
+  transition: background-color var(--anim-fast);
+}
+
+.modal-btn:hover,
+.modal-btn:focus {
+  background-color: rgba(33, 150, 243, 0.9);
+  fill: var(--main-bg-color);
+  border: 1px solid var(--main-bg-color);
+}
+
 /* Скрытие логических заголовков */
 .features-title,
 .portfolio-title {
