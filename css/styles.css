@@ -136,7 +136,7 @@ img {
 .current::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   display: block;
   width: 100%;
@@ -385,16 +385,20 @@ img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  transition: background-color var(--anim-fast), fill var(--anim-fast);
+  color: var(--sec-bg-font-color);
+  transition: background-color var(--anim-fast),
+  color var(--anim-fast);
 }
 .socials-link:hover,
 .socials-link:focus {
   background-color: var(--accent-color);
+  color: var(--sec-bg-font-color);
 }
 
 .socials-link:hover .socials-icon,
 .socials-link:focus .socials-icon {
-  fill: var(--sec-bg-font-color);
+  fill: currentColor;
+  transition: fill var(--anim-fast);
 }
 
 .socials-item:not(:last-child) {
@@ -570,10 +574,10 @@ img {
   letter-spacing: 0.03em;
   color: var(--main-font-color);
   padding: 6px 22px;
-  min-width: 128px;
   border: 1px solid transparent;
   border-radius: 4px;
-  transition: color var(--anim-fast), box-shadow var(--anim-fast);
+  transition: color var(--anim-fast), box-shadow var(--anim-fast),
+  background-color var(--anim-fast);
 }
 .list-btn:not(:last-child) {
   margin-right: 8px;
@@ -640,6 +644,10 @@ img {
 .portfolio-item:hover .portfolio-descr {
   transform: translateY(0%);
 }
+.portfolio-card:focus .portfolio-descr {
+  transform: translateY(0%);
+}
+
 
 .card-txt {
   padding: 20px 24px;
