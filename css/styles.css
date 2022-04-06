@@ -144,6 +144,9 @@ img {
   background-color: var(--accent-color);
   border-radius: 2px;
 }
+.current{
+  color: var(--accent-color);
+}
 
 /* Контактные данные */
 .auth-nav {
